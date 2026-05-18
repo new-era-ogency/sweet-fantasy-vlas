@@ -18,6 +18,7 @@
   const GALLERY_ADMIN_PIN = '3333';
   /** Session flag so the PIN is not requested again until the browser tab closes. */
   const GALLERY_SESSION_KEY = 'sf_gallery_publish_ok';
+  const COOKIE_CONSENT_KEY = 'sf_cookie_consent';
 
   function sanitizeGalleryBasename(original) {
     var base = String(original || '').replace(/\.[^.]+$/, '').trim();
@@ -101,6 +102,12 @@
       labelComment: 'Special Requests / Notes',
       btnOrderSubmit: 'Place Cake Order',
       orderSuccessMsg: '✨ Prototype Mode: Thank you! (This simulates a successful submission).',
+      gdprConsent: 'I agree to the processing of my personal data for order management.',
+      gdprConsentError: 'Please confirm your consent to continue.',
+      cookieNotice:
+        'We use essential cookies and local storage to remember your preferences. By continuing, you agree to our cookie use in line with GDPR.',
+      cookieOk: 'OK',
+      fabContactLabel: 'Contact us',
       galleryTitle: 'Gallery',
       galleryIntro:
         'A soft grid of life at Sweet Fantasy — hover to peek, tap to savour full screen.',
@@ -250,6 +257,12 @@
       labelComment: 'Специални изисквания / бележки',
       btnOrderSubmit: 'Направи поръчка',
       orderSuccessMsg: '✨ Прототип: Благодарим ви! (Това демонстрира успешно изпращане).',
+      gdprConsent: 'Съгласен съм с обработката на личните ми данни за управление на поръчката.',
+      gdprConsentError: 'Моля, потвърдете съгласието си, за да продължите.',
+      cookieNotice:
+        'Използваме основни бисквитки и локално съхранение за вашите предпочитания. С продължаването приемате използването им съгласно GDPR.',
+      cookieOk: 'OK',
+      fabContactLabel: 'Свържете се с нас',
       galleryTitle: 'Галерия',
       galleryIntro:
         'Мека мрежа от кадри — придвижете показалеца за увеличение, натиснете за цял екран.',
@@ -399,6 +412,12 @@
       labelComment: 'Особливі побажання / нотатки',
       btnOrderSubmit: 'Замовити торт',
       orderSuccessMsg: '✨ Режим прототипу: Дякуємо! (Емуляція успішного надсилання заявки).',
+      gdprConsent: 'Я даю згоду на обробку моїх персональних даних для керування замовленням.',
+      gdprConsentError: 'Будь ласка, підтвердіть згоду, щоб продовжити.',
+      cookieNotice:
+        'Ми використовуємо необхідні cookie та локальне сховище для ваших налаштувань. Продовжуючи, ви погоджуєтесь з їх використанням відповідно до GDPR.',
+      cookieOk: 'OK',
+      fabContactLabel: 'Зв’язатися з нами',
       galleryTitle: 'Галерея',
       galleryIntro:
         'Сітка знімків Sweet Fantasy — наведіть курсор, щоб підсвітити; клік — на весь екран.',
@@ -500,10 +519,20 @@
       hashRouterTick: 0,
 
       showPrototypeSuccess: false,
+      showCookies: true,
+      gdprConsentChecked: false,
+      gdprConsentError: false,
+      showFab: false,
 
       init() {
         var self = this;
         document.documentElement.setAttribute('lang', docLang(this.lang));
+
+        try {
+          if (localStorage.getItem(COOKIE_CONSENT_KEY) === '1') this.showCookies = false;
+        } catch (_) {}
+
+        this.bindFabScroll();
 
         window.addEventListener('hashchange', function () {
           self.hashRouterTick++;
@@ -523,6 +552,50 @@
         });
       },
 
+
+      bindFabScroll() {
+        var self = this;
+        function updateFab() {
+          self.showFab = window.scrollY > 160;
+        }
+        updateFab();
+        window.addEventListener('scroll', updateFab, { passive: true });
+      },
+
+      acceptCookies() {
+        this.showCookies = false;
+        try {
+          localStorage.setItem(COOKIE_CONSENT_KEY, '1');
+        } catch (_) {}
+      },
+
+      submitCakeOrder() {
+        if (!this.gdprConsentChecked) {
+          this.gdprConsentError = true;
+          return;
+        }
+        this.gdprConsentError = false;
+        this.showPrototypeSuccess = true;
+        var self = this;
+        setTimeout(function () {
+          self.showPrototypeSuccess = false;
+        }, 5000);
+      },
+
+      quickContact() {
+        var el = document.getElementById('contacts');
+        if (!el) return;
+        var header = document.querySelector('header');
+        var offsetPx = header ? -(header.offsetHeight + 16) : -100;
+        var L = window.__sfLenis;
+        if (L && typeof L.scrollTo === 'function') {
+          try {
+            L.scrollTo(el, { offset: offsetPx });
+            return;
+          } catch (_) {}
+        }
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      },
 
       maybeScrollGalleryAdminAnchor() {
         if (typeof window === 'undefined' || window.location.hash !== '#gallery-admin') return;
