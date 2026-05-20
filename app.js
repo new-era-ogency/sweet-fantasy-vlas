@@ -20,7 +20,48 @@
   /** First release batch: menu desserts grouped by boutique categories. */
   const DESSERT_MENU_I18N = Object.freeze({
     EN: {
-      standard: [],
+      standard: [
+        {
+          name: 'Dubai Pistachio',
+          desc: 'Crispy kadaif, pistachio cream, and premium Belgian milk chocolate.',
+          image: 'images/screen_dubai.png',
+        },
+        {
+          name: 'Garash Cake',
+          desc: 'A legendary classic with walnut layers and rich dark chocolate ganache.',
+          image: 'images/screen_garash.png',
+        },
+        {
+          name: 'White Garash',
+          desc: 'A delicate twist on the classic with white chocolate and crunchy nuts.',
+          image: 'images/screen_white_garash.png',
+        },
+        {
+          name: 'Amber Cake',
+          desc: 'Caramel mousse, fine cake layers, and an exquisite balance of sweetness.',
+          image: 'images/screen_amber.png',
+        },
+        {
+          name: 'Amaranta',
+          desc: 'Airy cream, light sponge layers, and a delicate boutique flavor.',
+          image: 'images/screen_amaranta.png',
+        },
+        {
+          name: 'Verdino Almonds & Figs',
+          desc: 'A unique combination of almonds, sweet figs, and light cream.',
+          image: 'images/screen_verdino.png',
+        },
+        {
+          name: 'Dolce Vita Chocolate Mousse',
+          desc: 'Velvety Belgian chocolate mousse on an airy sponge base.',
+          image: 'images/screen_dolce_vita_choco.png',
+        },
+        {
+          name: 'Dolce Vita Fresh Fruits',
+          desc: 'Chocolate harmony topped with fresh seasonal fruits.',
+          image: 'images/screen_dolce_vita_fruit.png',
+        },
+      ],
       custom: [
         {
           name: 'Cake "Stylish 18"',
@@ -58,7 +99,48 @@
       catering: [],
     },
     BG: {
-      standard: [],
+      standard: [
+        {
+          name: 'Дубай с шамфъстък',
+          desc: 'Хрупкав кадаиф, крем от шамфъстък и белгийски млечен шоколад.',
+          image: 'images/screen_dubai.png',
+        },
+        {
+          name: 'Гараш "Захаро"',
+          desc: 'Легендарна класика с орехови блатове и богат тъмен шоколадов ганаш.',
+          image: 'images/screen_garash.png',
+        },
+        {
+          name: 'Бял Гараш "Захаро"',
+          desc: 'Нежен вариант на класиката с бял шоколад и хрупкави ядки.',
+          image: 'images/screen_white_garash.png',
+        },
+        {
+          name: 'Амбър',
+          desc: 'Карамелен мус, фини блатове и изящен баланс на сладост.',
+          image: 'images/screen_amber.png',
+        },
+        {
+          name: 'Амаранта',
+          desc: 'Ефирен крем, леки блатове и деликатен бутиков вкус.',
+          image: 'images/screen_amaranta.png',
+        },
+        {
+          name: 'Вердино с бадеми и смокини',
+          desc: 'Уникална комбинация от бадеми, сладки смокини и лек крем.',
+          image: 'images/screen_verdino.png',
+        },
+        {
+          name: 'Долче Вита шоколадов мус',
+          desc: 'Кадифен белгийски шоколадов мус върху въздушна основа.',
+          image: 'images/screen_dolce_vita_choco.png',
+        },
+        {
+          name: 'Долче Вита шоко с пресни плодове',
+          desc: 'Шоколадова хармония, гарнирана с пресни сезонни плодове.',
+          image: 'images/screen_dolce_vita_fruit.png',
+        },
+      ],
       custom: [
         {
           name: 'Торта "Стилно 18"',
@@ -96,7 +178,48 @@
       catering: [],
     },
     UA: {
-      standard: [],
+      standard: [
+        {
+          name: 'Дубайський з фісташками',
+          desc: 'Хрусткий кадаїф, фісташковий крем та преміальний бельгійський молочний шоколад.',
+          image: 'images/screen_dubai.png',
+        },
+        {
+          name: 'Торт Гараш',
+          desc: 'Легендарна класика з горіховими коржами та насиченим ганашем із темного шоколаду.',
+          image: 'images/screen_garash.png',
+        },
+        {
+          name: 'Білий Гараш',
+          desc: 'Ніжний варіант класики з білим шоколадом та хрусткими горіхами.',
+          image: 'images/screen_white_garash.png',
+        },
+        {
+          name: 'Амбер',
+          desc: 'Карамельний мус, ніжні коржі та витончений баланс солодкості.',
+          image: 'images/screen_amber.png',
+        },
+        {
+          name: 'Амаранта',
+          desc: 'Ефірний крем, легкі коржі та делікатний бутиковий смак.',
+          image: 'images/screen_amaranta.png',
+        },
+        {
+          name: 'Вердіно з мигдалем та інжиром',
+          desc: 'Унікальне поєднання мигдалю, солодкого інжиру та легкого крему.',
+          image: 'images/screen_verdino.png',
+        },
+        {
+          name: 'Дольче Віта шоколадний мус',
+          desc: 'Оксамитовий бельгійський шоколадний мус на повітряній основі.',
+          image: 'images/screen_dolce_vita_choco.png',
+        },
+        {
+          name: 'Дольче Віта з фруктами',
+          desc: 'Шоколадна гармонія, прикрашена свіжими сезонними фруктами.',
+          image: 'images/screen_dolce_vita_fruit.png',
+        },
+      ],
       custom: [
         {
           name: 'Торт "Стильне 18"',
