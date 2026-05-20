@@ -11,8 +11,133 @@
     tea: [3.6, 3.6, 3.9, 4.2, 5.8, 5.5],
     bubble: [6.2, 6.5, 6.9, 6.8, 6.9, 7.2],
     lemonade: [4.9, 5.3, 5.5, 5.6, 5.2, 5.8],
-    desserts: [15.9, 12.9, 7.9, 6.9, 5.9, 6.4, 7.5, 7.9, 8.2],
+    desserts: [
+      16.9, 14.9, 14.5, 13.9, 13.5, 15.2, 14.8, 15.5, 14.2, 13.8, 12.9, 13.2, 12.5, 14.0, 15.8, 14.6, 13.6,
+      14.4, 15.0, 13.0, 12.8, 13.4, 14.1, 13.7,
+    ],
   });
+
+  /** First release batch: menu desserts grouped by boutique categories. */
+  const DESSERT_MENU_I18N = Object.freeze({
+    EN: {
+      standard: [],
+      custom: [
+        {
+          name: 'Cake "Stylish 18"',
+          desc: 'A luxurious celebration cake with black and gold accents for an unforgettable jubilee.',
+          image: 'images/custom-18-cake.jpg',
+        },
+        {
+          name: 'Graduation Cake "Galin"',
+          desc: 'A large celebration cake with fresh strawberries, raspberries, and French macarons.',
+          image: 'images/custom-graduation-rect.jpg',
+        },
+        {
+          name: 'Graduation Cap Cake',
+          desc: 'Thematic graduation cake featuring a fondant mortarboard hat and golden accents.',
+          image: 'images/custom-graduation-cap.jpg',
+        },
+        {
+          name: 'Pink Ribbon Cake',
+          desc: 'An elegant cake with a large fondant bow and a stylish leopard print.',
+          image: 'images/custom-pink-bow.jpg',
+        },
+        {
+          name: 'Pink Star Cake',
+          desc: 'A striking star-shaped cake with a leopard print and stylish black ribbons.',
+          image: 'images/custom-star-leopard.jpg',
+        },
+      ],
+      vegan: [
+        {
+          name: 'Vegan Fruit Cake',
+          desc: 'A 100% plant-based cake with rich chocolate cream and a selection of fresh fruits.',
+          image: 'images/vegan-fruit.jpg',
+        },
+      ],
+      catering: [],
+    },
+    BG: {
+      standard: [],
+      custom: [
+        {
+          name: 'Торта "Стилно 18"',
+          desc: 'Луксозна празнична торта с черни и златни детайли за незабравим юбилей.',
+          image: 'images/custom-18-cake.jpg',
+        },
+        {
+          name: 'Торта "Дипломиране Галин"',
+          desc: 'Голяма празнична торта с пресни ягоди, малини и френски макарони.',
+          image: 'images/custom-graduation-rect.jpg',
+        },
+        {
+          name: 'Торта "Академична шапка"',
+          desc: 'Тематична торта за завършване с фонданова абсолвентска шапка и златни детайли.',
+          image: 'images/custom-graduation-cap.jpg',
+        },
+        {
+          name: 'Торта "Розова панделка"',
+          desc: 'Елегантна торта с голяма панделка от фондан и модерен леопардов принт.',
+          image: 'images/custom-pink-bow.jpg',
+        },
+        {
+          name: 'Торта "Розова звезда"',
+          desc: 'Ефектна торта във формата на звезда с леопардов принт и стилни черни панделки.',
+          image: 'images/custom-star-leopard.jpg',
+        },
+      ],
+      vegan: [
+        {
+          name: 'Веганска плодова торта',
+          desc: '100% растителна торта с богат шоколадов крем и селекция от свежи плодове.',
+          image: 'images/vegan-fruit.jpg',
+        },
+      ],
+      catering: [],
+    },
+    UA: {
+      standard: [],
+      custom: [
+        {
+          name: 'Торт "Стильне 18"',
+          desc: 'Розкішний святковий торт із чорними та золотими деталями до 18-річчя.',
+          image: 'images/custom-18-cake.jpg',
+        },
+        {
+          name: 'Торт "Дипломування Галин"',
+          desc: 'Великий святковий торт зі свіжими полуницями, малиною та французькими макаронами.',
+          image: 'images/custom-graduation-rect.jpg',
+        },
+        {
+          name: 'Торт "Академічна шапка"',
+          desc: 'Тематичний торт на випускний з абсолвентською шапкою з мастики та золотими деталями.',
+          image: 'images/custom-graduation-cap.jpg',
+        },
+        {
+          name: 'Торт "Рожевий бант"',
+          desc: 'Елегантний торт з великим бантом із мастики та модним леопардовим принтом.',
+          image: 'images/custom-pink-bow.jpg',
+        },
+        {
+          name: 'Торт "Рожева зірка"',
+          desc: 'Ефектний торт у формі зірки з леопардовим принтом та стильними чорними бантами.',
+          image: 'images/custom-star-leopard.jpg',
+        },
+      ],
+      vegan: [
+        {
+          name: 'Веганський фруктовий торт',
+          desc: '100% рослинний торт із насиченим шоколадним кремом та селекцією свіжих фруктів.',
+          image: 'images/vegan-fruit.jpg',
+        },
+      ],
+      catering: [],
+    },
+  });
+
+  function dessertsFor(lang) {
+    return DESSERT_MENU_I18N[lang] || DESSERT_MENU_I18N.EN;
+  }
 
   /** Simple PIN — change before launch (client-side only, not cryptographic security). */
   const GALLERY_ADMIN_PIN = '3333';
@@ -30,9 +155,17 @@
     EN: {
       langLabel: 'Language',
       navMenu: 'Menu',
+      navDesserts: 'Zaharo cakes',
+      navOrderCake: 'Order a cake',
       navGallery: 'Gallery',
       navAbout: 'About',
       navContacts: 'Contacts',
+      tabStandard: 'Standard',
+      tabCustom: 'Custom',
+      tabVegan: 'Vegan',
+      tabCatering: 'Catering',
+      showAllDessertsBtn: 'Show all',
+      emptyDessertsTab: 'This boutique collection is coming soon.',
       heroKicker: 'Boutique café',
       heroTitle: 'Sweet Fantasy',
       heroLead:
@@ -71,6 +204,8 @@
       secBubble: 'Bubble tea',
       secLemonade: 'Signature lemonades',
       secDesserts: 'Desserts',
+      dessertsZaharoLegend: 'Boutique cake collection — custom, vegan, standard, and catering selections.',
+      orderCakeCustomOption: 'Custom cake / bespoke design',
       capDrinks: 'Coffee rituals, softened light.',
       capCakes: 'A plate of sweetness for pausing.',
       aboutTitle: 'About us',
@@ -169,25 +304,23 @@
           'Ginger, honey & lime',
           "Seasonal chef's mix",
         ],
-        desserts: [
-          'Zaharo — éclair & choux selection',
-          'Zaharo — mini cakes & petit fours',
-          'Zaharo — signature cake slices (rotating daily)',
-          'House Napoleon with vanilla cream',
-          'Dark chocolate brownie',
-          'Salted caramel brownie',
-          'Classic vanilla cheesecake',
-          'Berry ripple cheesecake',
-          'Lemon & white chocolate cheesecake',
-        ],
+        desserts: dessertsFor('EN'),
       },
     },
     BG: {
       langLabel: 'Език',
       navMenu: 'Меню',
+      navDesserts: 'Торти Zaharo',
+      navOrderCake: 'Поръчай торта',
       navGallery: 'Галерия',
       navAbout: 'За нас',
       navContacts: 'Контакти',
+      tabStandard: 'Стандартни',
+      tabCustom: 'По поръчка',
+      tabVegan: 'Веган',
+      tabCatering: 'Кетъринг',
+      showAllDessertsBtn: 'Покажи всички',
+      emptyDessertsTab: 'Тази бутикова колекция очаквайте скоро.',
       heroKicker: 'Бутиково кафе',
       heroTitle: 'Sweet Fantasy',
       heroLead:
@@ -226,6 +359,9 @@
       secBubble: 'Bubble tea',
       secLemonade: 'Авторски лимонади',
       secDesserts: 'Десерти',
+      dessertsZaharoLegend:
+        'Бутикова колекция торти — по поръчка, веган, стандартни и кетъринг предложения.',
+      orderCakeCustomOption: 'Торта по поръчка / индивидуален дизайн',
       capDrinks: 'Кафе ритуали в меката светлина.',
       capCakes: 'Сладка пауза за масата ви.',
       aboutTitle: 'За нас',
@@ -324,25 +460,23 @@
           'Джинджифил, мед и лайм',
           'Сезонна смес на готвача',
         ],
-        desserts: [
-          'Пълната гама Zaharo — еклери и шу плато',
-          'Zaharo — мини торти и пти фур',
-          'Zaharo — флагмански резани парчета торта (делник)',
-          'Домашен Наполеон с богат ванилов крем',
-          'Брауни с черен шоколад',
-          'Брауни със солен карамел',
-          'Класически чийзкейк с ванилия',
-          'Чийзкейк с горски плодов мармор',
-          'Чийзкейк лимон и бял шоколад',
-        ],
+        desserts: dessertsFor('BG'),
       },
     },
     UA: {
       langLabel: 'Мова',
       navMenu: 'Меню',
+      navDesserts: 'Торти Zaharo',
+      navOrderCake: 'Замовити торт',
       navGallery: 'Галерея',
       navAbout: 'Про нас',
       navContacts: 'Контакти',
+      tabStandard: 'Стандартні',
+      tabCustom: 'На замовлення',
+      tabVegan: 'Веган',
+      tabCatering: 'Кейтеринг',
+      showAllDessertsBtn: 'Показати всі',
+      emptyDessertsTab: 'Ця boutique-колекція з’явиться незабаром.',
       heroKicker: 'Бутикова кав’ярня',
       heroTitle: 'Sweet Fantasy',
       heroLead:
@@ -381,6 +515,9 @@
       secBubble: 'Bubble tea',
       secLemonade: 'Авторські лимонади',
       secDesserts: 'Десерти',
+      dessertsZaharoLegend:
+        'Boutique-колекція тортів — на замовлення, веган, стандартні та кейтеринг-пропозиції.',
+      orderCakeCustomOption: 'Торт на замовлення / індивідуальний дизайн',
       capDrinks: 'Кавові ритуали в м’якому світлі.',
       capCakes: 'Солодка перерва для вашого столу.',
       aboutTitle: 'Про нас',
@@ -479,17 +616,7 @@
           'Імбир, мед і лайм',
           'Сезонний мікс шефа',
         ],
-        desserts: [
-          'Повна лінійка Zaharo — еклери й шу',
-          'Zaharo — міні-торти й петі-фур',
-          'Zaharo — фірмові шматочки тортів (щодня)',
-          'Домашній Наполеон із ванільним кремом',
-          'Брауні з чорного шоколаду',
-          'Брауні з солоною карамеллю',
-          'Класичний ванільний чізкейк',
-          'Чізкейк з ягідним мармуром',
-          'Чізкейк лимон і білий шоколад',
-        ],
+        desserts: dessertsFor('UA'),
       },
     },
   };
@@ -523,6 +650,10 @@
       gdprConsentChecked: false,
       gdprConsentError: false,
       showFab: false,
+      dessertTabs: ['standard', 'custom', 'vegan', 'catering'],
+      currentTab: 'custom',
+      showAllDesserts: false,
+      isWideScreen: false,
 
       init() {
         var self = this;
@@ -533,6 +664,7 @@
         } catch (_) {}
 
         this.bindFabScroll();
+        this.bindDessertViewport();
 
         window.addEventListener('hashchange', function () {
           self.hashRouterTick++;
@@ -560,6 +692,15 @@
         }
         updateFab();
         window.addEventListener('scroll', updateFab, { passive: true });
+      },
+
+      bindDessertViewport() {
+        var self = this;
+        function updateDessertViewport() {
+          self.isWideScreen = window.innerWidth >= 1024;
+        }
+        updateDessertViewport();
+        window.addEventListener('resize', updateDessertViewport, { passive: true });
       },
 
       acceptCookies() {
@@ -627,6 +768,49 @@
         var pack = i18n[this.lang] || i18n.EN;
         var m = pack.menuImages;
         return Array.isArray(m) && m.length ? m : i18n.EN.menuImages;
+      },
+
+      localeMenuDesserts() {
+        var pack = i18n[this.lang] || i18n.EN;
+        var d = pack.menu && pack.menu.desserts;
+        return d && typeof d === 'object' ? d : dessertsFor('EN');
+      },
+
+      dessertTabLabel(tab) {
+        var map = {
+          standard: 'tabStandard',
+          custom: 'tabCustom',
+          vegan: 'tabVegan',
+          catering: 'tabCatering',
+        };
+        return this.t(map[tab] || 'tabCustom');
+      },
+
+      setDessertTab(tab) {
+        if (!this.dessertTabs.includes(tab)) return;
+        this.currentTab = tab;
+        this.showAllDesserts = false;
+      },
+
+      activeDesserts() {
+        var menu = this.localeMenuDesserts();
+        var items = menu && menu[this.currentTab];
+        return Array.isArray(items) ? items : [];
+      },
+
+      visibleDesserts() {
+        var items = this.activeDesserts();
+        return this.isWideScreen || this.showAllDesserts ? items : items.slice(0, 4);
+      },
+
+      allDessertItems() {
+        var menu = this.localeMenuDesserts();
+        var out = [];
+        this.dessertTabs.forEach(function (tab) {
+          var items = menu && menu[tab];
+          if (Array.isArray(items)) out = out.concat(items);
+        });
+        return out;
       },
 
       openGalleryModal(item) {
