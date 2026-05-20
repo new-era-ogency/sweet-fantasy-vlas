@@ -482,11 +482,12 @@
                   role="listitem"
                   class="group overflow-hidden rounded-2xl border border-slate-900/[0.07] bg-white shadow-sm ring-1 ring-white transition duration-300 hover:-translate-y-0.5 hover:border-champagne/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
                 >
-                  <div class="flex h-72 min-h-[260px] items-center justify-center bg-white">
+                  <div class="w-full h-72 bg-white rounded-t-xl overflow-hidden flex items-center justify-center p-3">
                     <img
                       :src="item.image"
                       :alt="item.name"
-                      class="h-full w-full bg-white object-contain p-4"
+                      class="w-full h-full object-contain bg-white block"
+                      style="mix-blend-mode: normal; filter: none;"
                       loading="lazy"
                       decoding="async"
                     />
