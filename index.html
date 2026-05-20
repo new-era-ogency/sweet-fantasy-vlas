@@ -519,6 +519,103 @@
             </button>
           </div>
 
+          <div
+            class="mt-14 rounded-[1.75rem] border border-slate-900/[0.07] bg-white/95 p-6 shadow-[0_24px_56px_-32px_rgba(22,26,31,0.12)] ring-1 ring-white sm:p-8 lg:p-10"
+            data-reveal="up"
+          >
+            <div class="max-w-3xl">
+              <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-champagne">Cake catalog</p>
+              <h3 class="mt-2 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                Каталог торти по поръчка
+              </h3>
+              <p class="mt-3 text-[14px] leading-relaxed text-slate-600">
+                Основни категории торти с описания, алергени и начални цени в BGN.
+              </p>
+            </div>
+
+            <ul class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2" role="list">
+              <template x-for="item in cakeCatalog" :key="'cake-catalog-' + item.id">
+                <li class="rounded-2xl border border-slate-900/[0.07] bg-gradient-to-br from-white via-white to-cream/45 p-5 shadow-sm">
+                  <div class="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400" x-text="item.slug"></p>
+                      <h4 class="mt-1 font-display text-xl font-semibold leading-snug text-ink" x-text="item.name"></h4>
+                    </div>
+                    <span class="rounded-full bg-ink px-3 py-1 text-[12px] font-semibold text-white" x-text="'от ' + item.basePrice + ' BGN'"></span>
+                  </div>
+                  <p class="mt-3 text-[14px] font-medium leading-relaxed text-slate-700" x-text="item.shortDescription"></p>
+                  <p class="mt-3 text-[13px] leading-relaxed text-slate-500" x-text="item.fullDescription"></p>
+                  <details class="mt-4 rounded-xl border border-slate-900/[0.07] bg-white px-4 py-3">
+                    <summary class="cursor-pointer text-[12px] font-bold uppercase tracking-[0.16em] text-slate-500">
+                      Алергени
+                    </summary>
+                    <ul class="mt-3 list-disc space-y-1 pl-5 text-[13px] leading-relaxed text-slate-600">
+                      <template x-for="allergen in item.allergens" :key="item.slug + '-' + allergen">
+                        <li x-text="allergen"></li>
+                      </template>
+                    </ul>
+                  </details>
+                </li>
+              </template>
+            </ul>
+          </div>
+
+          <div
+            class="mt-14 rounded-[1.75rem] border border-santorini/20 bg-gradient-to-br from-mist/40 via-white to-white p-6 shadow-[0_24px_56px_-32px_rgba(22,26,31,0.12)] ring-1 ring-white sm:p-8 lg:p-10"
+            data-reveal="up"
+            data-reveal-delay="80"
+          >
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div class="max-w-3xl">
+                <p class="text-[11px] font-bold uppercase tracking-[0.28em] text-santorini-deep">Cafés Richard</p>
+                <h3 class="mt-2 font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                  Продукти Cafés Richard
+                </h3>
+                <p class="mt-3 text-[14px] leading-relaxed text-slate-600">
+                  Зърна, E.S.E дози, Nespresso капсули, био чайове и горещ шоколад за дома.
+                </p>
+              </div>
+              <div class="overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch]">
+                <div class="inline-flex min-w-max rounded-full border border-slate-900/[0.08] bg-white/85 p-1 shadow-sm ring-1 ring-white">
+                  <template x-for="category in richardProductCategories" :key="'richard-category-' + category">
+                    <button
+                      type="button"
+                      class="rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.13em] transition"
+                      :class="selectedRichardCategory === category ? 'bg-ink text-white shadow-sm' : 'text-slate-500 hover:text-ink'"
+                      @click="selectedRichardCategory = category"
+                      x-text="category"
+                    ></button>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+            <ul class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" role="list">
+              <template x-for="product in filteredRichardProducts()" :key="'richard-product-' + product.id">
+                <li class="overflow-hidden rounded-2xl border border-slate-900/[0.07] bg-white shadow-sm ring-1 ring-white">
+                  <div class="flex h-36 items-center justify-center bg-gradient-to-br from-cream via-white to-mist/50 px-4 text-center">
+                    <span class="rounded-full border border-slate-900/[0.08] bg-white/85 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400" x-text="product.image_placeholder"></span>
+                  </div>
+                  <div class="p-4">
+                    <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-santorini-deep" x-text="product.category"></p>
+                    <h4 class="mt-1 font-display text-lg font-semibold leading-snug text-ink" x-text="product.name_bg"></h4>
+                    <dl class="mt-3 space-y-1 text-[13px] leading-relaxed text-slate-600">
+                      <div class="flex justify-between gap-3">
+                        <dt>Тип</dt>
+                        <dd class="font-semibold text-slate-900" x-text="product.type"></dd>
+                      </div>
+                      <div class="flex justify-between gap-3">
+                        <dt>Разфасовка</dt>
+                        <dd class="font-semibold text-slate-900" x-text="product.weight_volume"></dd>
+                      </div>
+                    </dl>
+                    <p class="mt-4 rounded-full bg-ink px-4 py-2 text-center text-[13px] font-semibold text-white" x-text="bgn(product.price_bgn)"></p>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+
 
           <div class="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-16">
             <div class="space-y-12">
