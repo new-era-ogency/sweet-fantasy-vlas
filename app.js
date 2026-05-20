@@ -24,7 +24,7 @@
         {
           name: 'Cake "Stylish 18"',
           desc: 'A luxurious celebration cake with black and gold accents.',
-          image: 'images/photo_BlackGolden cake.jpg',
+          image: 'images/photo_BlackGolden_cake.jpg',
         },
         {
           name: 'Graduation Cake "Galin"',
@@ -39,7 +39,7 @@
         {
           name: 'Pink Ribbon Cake',
           desc: 'An elegant cake with a large fondant bow and a stylish leopard print.',
-          image: 'images/photo_pink-leopard .jpg',
+          image: 'images/photo_pink-leopard.jpg',
         },
         {
           name: 'Pink Star Cake',
@@ -49,7 +49,7 @@
         {
           name: 'Floral Jubilee Cake',
           desc: 'A delicate celebration cake with hand-crafted flowers and elegant golden details.',
-          image: 'images/photo_cake-with-flowers.jpg',
+          image: 'images/photo_white-S1812.jpg',
         },
       ],
       standard: [
@@ -85,7 +85,7 @@
         {
           name: 'Торта "Стилно 18"',
           desc: 'Луксозна празнична торта с черни и златни детайли за юбилей.',
-          image: 'images/photo_BlackGolden cake.jpg',
+          image: 'images/photo_BlackGolden_cake.jpg',
         },
         {
           name: 'Торта "Дипломиране Галин"',
@@ -100,7 +100,7 @@
         {
           name: 'Торта "Розова панделка"',
           desc: 'Елегантна торта с голяма панделка от фондан и модерен леопардов принт.',
-          image: 'images/photo_pink-leopard .jpg',
+          image: 'images/photo_pink-leopard.jpg',
         },
         {
           name: 'Торта "Розова звезда"',
@@ -110,7 +110,7 @@
         {
           name: 'Торта "Цветен юбилей"',
           desc: 'Нежна празнична торта с ръчно изработени цветя и елегантни златни детайли.',
-          image: 'images/photo_cake-with-flowers.jpg',
+          image: 'images/photo_white-S1812.jpg',
         },
       ],
       standard: [
@@ -146,7 +146,7 @@
         {
           name: 'Торт "Стильне 18"',
           desc: 'Розкішний святковий торт із чорними та золотими деталями до 18-річчя.',
-          image: 'images/photo_BlackGolden cake.jpg',
+          image: 'images/photo_BlackGolden_cake.jpg',
         },
         {
           name: 'Торт "Дипломування Галин"',
@@ -161,7 +161,7 @@
         {
           name: 'Торт "Рожевий бант"',
           desc: 'Елегантний торт з великим бантом із мастики та модним леопардовим принтом.',
-          image: 'images/photo_pink-leopard .jpg',
+          image: 'images/photo_pink-leopard.jpg',
         },
         {
           name: 'Торт "Рожева зірка"',
@@ -171,7 +171,7 @@
         {
           name: 'Торт "Квітковий ювілей"',
           desc: 'Ніжний святковий торт з ручними квітами та елегантними золотими деталями.',
-          image: 'images/photo_cake-with-flowers.jpg',
+          image: 'images/photo_white-S1812.jpg',
         },
       ],
       standard: [
