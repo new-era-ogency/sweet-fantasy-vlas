@@ -17,6 +17,229 @@
     ],
   });
 
+  const CAKE_CATALOG_BG = Object.freeze([
+    {
+      id: 1,
+      name: 'Детски торти',
+      slug: 'detski-torti',
+      shortDescription: 'Цветни детски торти с любими герои, нежни кремове и празнична украса по желание.',
+      fullDescription:
+        'Детските торти са създадени за весели празници и незабравими снимки – с ярки цветове, любими персонажи и леки, балансирани начинки. Могат да бъдат приготвени с ванилов, шоколадов или плодов крем, меки блатове и декорация от фондан, крем или ядлива картинка. Заради по-сложни фигури и 3D елементи директен надпис върху тортата не е препоръчителен. Ако желаете надпис, препоръчваме поставяне върху подходяща плочка или свободна зона от дизайна.',
+      allergens: [
+        'Зърнени култури, съдържащи глутен',
+        'Яйца и продукти от тях',
+        'Мляко и млечни продукти (включително лактоза)',
+        'Ядки – възможни следи',
+      ],
+      basePrice: 55,
+      hasCustomOptions: true,
+    },
+    {
+      id: 2,
+      name: 'Празнични и Сватбени торти',
+      slug: 'praznichni-i-svatbeni-torti',
+      shortDescription: 'Елегантни празнични и сватбени торти с изискан дизайн за специални поводи.',
+      fullDescription:
+        'Празничните и сватбени торти впечатляват с фина визия, стабилна конструкция и деликатни вкусове, подходящи за големи събития. Предлагат се с многоетажен дизайн, крем-чиз, шоколадов ганаш, ванилов крем, плодови акценти и ръчно изработена украса. При торти с цветя, златни детайли или висока декорация директен надпис върху тортата не е препоръчителен. Ако желаете послание, най-подходящо е то да бъде поставено върху отделна плочка или елегантен топер.',
+      allergens: [
+        'Зърнени култури, съдържащи глутен',
+        'Яйца и продукти от тях',
+        'Мляко и млечни продукти (включително лактоза)',
+        'Ядки – възможни следи',
+        'Соя и продукти от нея – възможни следи',
+      ],
+      basePrice: 90,
+      hasCustomOptions: true,
+    },
+    {
+      id: 3,
+      name: 'Стандартни и Класически торти',
+      slug: 'standartni-i-klasicheski-torti',
+      shortDescription: 'Класически торти с познати вкусове като Гараш, Сахер и богат шоколадов крем.',
+      fullDescription:
+        'Стандартните и класически торти са избор за всички, които обичат доказани рецепти, наситен шоколадов вкус и балансирана сладост. В тази категория влизат торти тип Гараш, Сахер, шоколадови и ванилови комбинации с ядки, какаови блатове и плътни кремове. При глазури от шоколад или ядкова украса директен надпис върху тортата може да бъде ограничен според конкретния модел. Ако желаете надпис, препоръчваме предварително уточнение или избор на декоративна плочка.',
+      allergens: [
+        'Зърнени култури, съдържащи глутен',
+        'Яйца и продукти от тях',
+        'Мляко и млечни продукти (включително лактоза)',
+        'Ядки – лешници, орехи или бадеми',
+        'Соя и продукти от нея – възможни следи',
+      ],
+      basePrice: 45,
+      hasCustomOptions: true,
+    },
+    {
+      id: 4,
+      name: 'Бутикови торти',
+      slug: 'butikovi-torti',
+      shortDescription: 'Ексклузивни бутикови торти с индивидуален дизайн, изработени специално за вашия повод.',
+      fullDescription:
+        'Бутиковите торти са персонални сладкарски проекти с внимание към всеки детайл – форма, цветове, текстури и ръчно изработена декорация. Подходящи са за юбилеи, корпоративни събития, тематични партита и специални подаръци с впечатляваща визия. Заради сложната украса, фигури, перли, цветя или конструктивни елементи директен надпис върху тортата не винаги е препоръчителен. При желание за надпис той може да бъде интегриран като топер, плочка или част от общата композиция.',
+      allergens: [
+        'Зърнени култури, съдържащи глутен',
+        'Яйца и продукти от тях',
+        'Мляко и млечни продукти (включително лактоза)',
+        'Ядки – възможни следи',
+        'Соя и продукти от нея – възможни следи',
+      ],
+      basePrice: 75,
+      hasCustomOptions: true,
+    },
+    {
+      id: 5,
+      name: 'Торти с фотопечат',
+      slug: 'torti-s-fotopechat',
+      shortDescription: 'Персонализирани торти с качествена ядлива фотопечат за снимки, рисунки или лога.',
+      fullDescription:
+        'Тортите с фотопечат са чудесен избор, когато искате лична снимка, детска рисунка, герой или фирмено лого да бъде част от празника. Изображението се отпечатва върху ядлива хартия с подходящи сладкарски бои и се поставя върху гладка повърхност за максимално чист резултат. За да се запази качеството на фотопечата, директен надпис върху самата картинка не е препоръчителен. Ако желаете текст, най-добре е той да бъде разположен около изображението или върху отделна декоративна плочка.',
+      allergens: [
+        'Зърнени култури, съдържащи глутен',
+        'Яйца и продукти от тях',
+        'Мляко и млечни продукти (включително лактоза)',
+        'Ядки – възможни следи',
+        'Оцветители в ядливата фотопечат',
+      ],
+      basePrice: 60,
+      hasCustomOptions: true,
+    },
+    {
+      id: 6,
+      name: 'Кето и Здравословни торти',
+      slug: 'keto-i-zdravoslovni-torti',
+      shortDescription: 'По-леки торти без добавена захар или глутен, подходящи за специален хранителен режим.',
+      fullDescription:
+        'Кето и здравословните торти са създадени за клиенти, които търсят по-балансиран десерт без компромис с вкуса. Приготвят се с внимателно подбрани продукти като ядкови брашна, кремове без добавена захар, какао, плодове и естествени подсладители според избрания вариант. Заради специфичната структура на кремовете и глазурите директен надпис върху тортата може да не бъде подходящ при всички модели. Ако желаете надпис, препоръчваме да го добавим върху отделна плочка или минималистичен топер.',
+      allergens: [
+        'Яйца и продукти от тях',
+        'Мляко и млечни продукти (включително лактоза)',
+        'Ядки – бадеми, лешници или орехи',
+        'Соя и продукти от нея – възможни следи',
+      ],
+      basePrice: 70,
+      hasCustomOptions: true,
+    },
+  ]);
+
+  const CAFES_RICHARD_PRODUCTS = Object.freeze([
+    {
+      id: 1,
+      name_bg: 'Cafés Richard Florio',
+      category: 'Зърна',
+      type: 'beans',
+      weight_volume: '1 кг',
+      price_bgn: 52,
+      image_placeholder: 'images/richard-florio-beans.jpg',
+    },
+    {
+      id: 2,
+      name_bg: 'Cafés Richard Perle Noire',
+      category: 'Зърна',
+      type: 'beans',
+      weight_volume: '1 кг',
+      price_bgn: 58,
+      image_placeholder: 'images/richard-perle-noire-beans.jpg',
+    },
+    {
+      id: 3,
+      name_bg: 'Moka Noisette E.S.E',
+      category: 'Дози E.S.E',
+      type: 'doses',
+      weight_volume: '1 доза',
+      price_bgn: 1.4,
+      image_placeholder: 'images/richard-moka-noisette-ese.jpg',
+    },
+    {
+      id: 4,
+      name_bg: 'Florio E.S.E',
+      category: 'Дози E.S.E',
+      type: 'doses',
+      weight_volume: '1 доза',
+      price_bgn: 1.3,
+      image_placeholder: 'images/richard-florio-ese.jpg',
+    },
+    {
+      id: 5,
+      name_bg: 'Decaf E.S.E',
+      category: 'Дози E.S.E',
+      type: 'doses',
+      weight_volume: '1 доза',
+      price_bgn: 1.35,
+      image_placeholder: 'images/richard-decaf-ese.jpg',
+    },
+    {
+      id: 6,
+      name_bg: 'Nespresso Intense',
+      category: 'Капсули Nespresso',
+      type: 'capsules',
+      weight_volume: '10 капсули',
+      price_bgn: 14,
+      image_placeholder: 'images/richard-nespresso-intense.jpg',
+    },
+    {
+      id: 7,
+      name_bg: 'Nespresso Balance',
+      category: 'Капсули Nespresso',
+      type: 'capsules',
+      weight_volume: '10 капсули',
+      price_bgn: 14,
+      image_placeholder: 'images/richard-nespresso-balance.jpg',
+    },
+    {
+      id: 8,
+      name_bg: 'Nespresso Organic',
+      category: 'Капсули Nespresso',
+      type: 'capsules',
+      weight_volume: '10 капсули',
+      price_bgn: 15,
+      image_placeholder: 'images/richard-nespresso-organic.jpg',
+    },
+    {
+      id: 9,
+      name_bg: 'Био чай Мента',
+      category: 'Чай Био',
+      type: 'tea',
+      weight_volume: '20 филтъра',
+      price_bgn: 12,
+      image_placeholder: 'images/richard-bio-tea-mint.jpg',
+    },
+    {
+      id: 10,
+      name_bg: 'Био чай Карамел',
+      category: 'Чай Био',
+      type: 'tea',
+      weight_volume: '20 филтъра',
+      price_bgn: 12,
+      image_placeholder: 'images/richard-bio-tea-caramel.jpg',
+    },
+    {
+      id: 11,
+      name_bg: 'Био чай Мате Детокс',
+      category: 'Чай Био',
+      type: 'tea',
+      weight_volume: '20 филтъра',
+      price_bgn: 13,
+      image_placeholder: 'images/richard-bio-tea-mate-detox.jpg',
+    },
+    {
+      id: 12,
+      name_bg: 'Горещ шоколад Cafés Richard',
+      category: 'Горещ шоколад',
+      type: 'chocolate',
+      weight_volume: '1 кг',
+      price_bgn: 32,
+      image_placeholder: 'images/richard-hot-chocolate.jpg',
+    },
+  ]);
+
+  const RICHARD_PRODUCT_CATEGORIES = Object.freeze(['Всички', 'Зърна', 'Дози E.S.E', 'Капсули Nespresso', 'Чай Био', 'Горещ шоколад']);
+
+  function filterProductsByCategory(products, category) {
+    if (!category || category === 'Всички') return products;
+    return products.filter(function (product) {
+      return product.category === category;
+    });
+  }
+
   /** Dessert menu grouped by boutique categories. */
   const DESSERT_MENU_I18N = Object.freeze({
     EN: {
@@ -788,6 +1011,11 @@
       galleryAdminBanner: '',
       hashRouterTick: 0,
 
+      cakeCatalog: CAKE_CATALOG_BG,
+      richardProducts: CAFES_RICHARD_PRODUCTS,
+      richardProductCategories: RICHARD_PRODUCT_CATEGORIES,
+      selectedRichardCategory: 'Всички',
+
       showPrototypeSuccess: false,
       showCookies: true,
       gdprConsentChecked: false,
@@ -1019,6 +1247,18 @@
           if (Array.isArray(items)) out = out.concat(items);
         });
         return out;
+      },
+
+      filterProductsByCategory(products, category) {
+        return filterProductsByCategory(products, category);
+      },
+
+      filteredRichardProducts() {
+        return this.filterProductsByCategory(this.richardProducts, this.selectedRichardCategory);
+      },
+
+      bgn(value) {
+        return Number(value).toFixed(2) + ' BGN';
       },
 
       openGalleryModal(item) {
