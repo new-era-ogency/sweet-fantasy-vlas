@@ -24,7 +24,7 @@
         {
           name: 'Cake "Stylish 18"',
           desc: 'A luxurious celebration cake with black and gold accents.',
-          image: 'images/photo_BlackGolden cake.jpg',
+          image: 'images/photo_BlackGolden_cake.jpg',
         },
         {
           name: 'Graduation Cake "Galin"',
@@ -39,7 +39,7 @@
         {
           name: 'Pink Ribbon Cake',
           desc: 'An elegant cake with a large fondant bow and a stylish leopard print.',
-          image: 'images/photo_pink-leopard .jpg',
+          image: 'images/photo_pink-leopard.jpg',
         },
         {
           name: 'Pink Star Cake',
@@ -49,7 +49,7 @@
         {
           name: 'Floral Jubilee Cake',
           desc: 'A delicate celebration cake with hand-crafted flowers and elegant golden details.',
-          image: 'images/photo_cake-with-flowers.jpg',
+          image: 'images/photo_white-S1812.jpg',
         },
       ],
       standard: [
@@ -85,7 +85,7 @@
         {
           name: 'Торта "Стилно 18"',
           desc: 'Луксозна празнична торта с черни и златни детайли за юбилей.',
-          image: 'images/photo_BlackGolden cake.jpg',
+          image: 'images/photo_BlackGolden_cake.jpg',
         },
         {
           name: 'Торта "Дипломиране Галин"',
@@ -100,7 +100,7 @@
         {
           name: 'Торта "Розова панделка"',
           desc: 'Елегантна торта с голяма панделка от фондан и модерен леопардов принт.',
-          image: 'images/photo_pink-leopard .jpg',
+          image: 'images/photo_pink-leopard.jpg',
         },
         {
           name: 'Торта "Розова звезда"',
@@ -110,7 +110,7 @@
         {
           name: 'Торта "Цветен юбилей"',
           desc: 'Нежна празнична торта с ръчно изработени цветя и елегантни златни детайли.',
-          image: 'images/photo_cake-with-flowers.jpg',
+          image: 'images/photo_white-S1812.jpg',
         },
       ],
       standard: [
@@ -146,7 +146,7 @@
         {
           name: 'Торт "Стильне 18"',
           desc: 'Розкішний святковий торт із чорними та золотими деталями до 18-річчя.',
-          image: 'images/photo_BlackGolden cake.jpg',
+          image: 'images/photo_BlackGolden_cake.jpg',
         },
         {
           name: 'Торт "Дипломування Галин"',
@@ -161,7 +161,7 @@
         {
           name: 'Торт "Рожевий бант"',
           desc: 'Елегантний торт з великим бантом із мастики та модним леопардовим принтом.',
-          image: 'images/photo_pink-leopard .jpg',
+          image: 'images/photo_pink-leopard.jpg',
         },
         {
           name: 'Торт "Рожева зірка"',
@@ -171,7 +171,7 @@
         {
           name: 'Торт "Квітковий ювілей"',
           desc: 'Ніжний святковий торт з ручними квітами та елегантними золотими деталями.',
-          image: 'images/photo_cake-with-flowers.jpg',
+          image: 'images/photo_white-S1812.jpg',
         },
       ],
       standard: [
@@ -301,9 +301,23 @@
       labelName: 'Your Name',
       labelPhone: 'Phone Number',
       labelCakeType: 'Select Cake / Dessert',
-      labelQuantity: 'Quantity / Slices',
+      labelQuantity: 'Quantity',
       labelDate: 'Preferred Pickup Date & Time',
       labelComment: 'Special Requests / Notes',
+      labelPortions: 'Portions *',
+      labelFilling: 'Filling *',
+      labelExtraFilling: 'Extra Filling',
+      labelGlaze: 'Glaze Type *',
+      labelInscription: 'Inscription',
+      labelAdditionalNotes: 'Additional Notes',
+      labelPartyAddons: 'Would you like to add a party item — candle or fountain?',
+      productWarningTitle: 'Important product note',
+      productWarningText: 'Продуктът съдържа крепежни елементи',
+      deliveryDatePrefix: 'Earliest delivery date:',
+      selectPlaceholder: '-Select-',
+      fieldRequiredError: 'Please select an option.',
+      inscriptionHelp: 'Maximum 50 characters.',
+      partyAddonGalleryTitle: 'Available festive add-ons',
       btnOrderSubmit: 'Place Cake Order',
       orderSuccessMsg: '✨ Prototype Mode: Thank you! (This simulates a successful submission).',
       gdprConsent: 'I agree to the processing of my personal data for order management.',
@@ -336,6 +350,11 @@
       galleryAdminReadyBanner: 'Rename your files exactly as listed, upload them to images/, deploy the manifest.',
       galleryAdminHashHint:
         'This panel stays hidden until visitors open `#gallery-admin` — for example Sweet Fantasy#gallery-admin (replace the PIN in app.js anytime).',
+      portionOptions: ['10 portions', '16 portions', '24 portions'],
+      fillingOptions: ['Chocolate mousse', 'Vanilla cream', 'Pistachio cream', 'Berry cream'],
+      extraFillingOptions: ['No extra filling', 'Nuts', 'Chocolate chips', 'Fresh fruits'],
+      glazeOptions: ['Fondant (sugar paste)', 'Cream cheese', 'Chocolate ganache'],
+      partyAddonItems: ['Birthday candle', 'Cake fountain', 'Festive topper'],
       menu: {
         coffee: [
           'Espresso',
@@ -457,9 +476,23 @@
       labelName: 'Вашето име',
       labelPhone: 'Телефонен номер',
       labelCakeType: 'Изберете торта / десерт',
-      labelQuantity: 'Количество / парчета',
+      labelQuantity: 'Количество',
       labelDate: 'Желани дата и час за вземане',
       labelComment: 'Специални изисквания / бележки',
+      labelPortions: 'Порции *',
+      labelFilling: 'Начинка *',
+      labelExtraFilling: 'Добавка към начинката',
+      labelGlaze: 'Вид глазура / Покритие *',
+      labelInscription: 'Надпис',
+      labelAdditionalNotes: 'Допълнителни уточнения',
+      labelPartyAddons: 'Желаете ли да добавите парти артикул – свещ, фойерверк?',
+      productWarningTitle: 'Важно за продукта',
+      productWarningText: 'Продуктът съдържа крепежни елементи',
+      deliveryDatePrefix: 'Най-ранна дата на доставка:',
+      selectPlaceholder: '-Изберете-',
+      fieldRequiredError: 'Моля, изберете опция.',
+      inscriptionHelp: 'Максимум 50 символа.',
+      partyAddonGalleryTitle: 'Достъпни празнични добавки',
       btnOrderSubmit: 'Направи поръчка',
       orderSuccessMsg: '✨ Прототип: Благодарим ви! (Това демонстрира успешно изпращане).',
       gdprConsent: 'Съгласен съм с обработката на личните ми данни за управление на поръчката.',
@@ -492,6 +525,11 @@
       galleryAdminReadyBanner: 'Преименувайте оригиналите точно като описаните имена ги качете под images/, после публикувайте манифеста.',
       galleryAdminHashHint:
         'Инструментите се показват само при `#gallery-admin` на адресната лента (сменете PIN константа в app.js навреме).',
+      portionOptions: ['10 порции', '16 порции', '24 порции'],
+      fillingOptions: ['Шоколадов мус', 'Ванилов крем', 'Крем от шамфъстък', 'Горски крем'],
+      extraFillingOptions: ['Без добавка', 'Орехи', 'Шоколадови капки', 'Свежи плодове'],
+      glazeOptions: ['Фондант (захарна паста)', 'Крем-чиз', 'Шоколадов ганаш'],
+      partyAddonItems: ['Свещ за торта', 'Фойерверк за торта', 'Празничен топер'],
       menu: {
         coffee: [
           'Еспресо',
@@ -613,9 +651,23 @@
       labelName: 'Ваше ім’я',
       labelPhone: 'Номер телефону',
       labelCakeType: 'Оберіть торт / десерт',
-      labelQuantity: 'Кількість / шматочки',
+      labelQuantity: 'Кількість',
       labelDate: 'Бажана дата та час отримання',
       labelComment: 'Особливі побажання / нотатки',
+      labelPortions: 'Порції *',
+      labelFilling: 'Начинка *',
+      labelExtraFilling: 'Додаток до начинки',
+      labelGlaze: 'Тип глазурі / Покриття *',
+      labelInscription: 'Напис',
+      labelAdditionalNotes: 'Додаткові уточнення',
+      labelPartyAddons: 'Бажаєте додати святковий аксесуар — свічку або фонтан?',
+      productWarningTitle: 'Важливо про продукт',
+      productWarningText: 'Продуктът съдържа крепежни елементи',
+      deliveryDatePrefix: 'Найраніша дата доставки:',
+      selectPlaceholder: '-Оберіть-',
+      fieldRequiredError: 'Будь ласка, оберіть опцію.',
+      inscriptionHelp: 'Максимум 50 символів.',
+      partyAddonGalleryTitle: 'Доступні святкові додатки',
       btnOrderSubmit: 'Замовити торт',
       orderSuccessMsg: '✨ Режим прототипу: Дякуємо! (Емуляція успішного надсилання заявки).',
       gdprConsent: 'Я даю згоду на обробку моїх персональних даних для керування замовленням.',
@@ -648,6 +700,11 @@
       galleryAdminReadyBanner: 'Збережіть файли точно під вказані імена в images/, додайте маніфест і синхронізуйте сайт.',
       galleryAdminHashHint:
         'Панель побачите лише з хешем #gallery-admin (PIN змінюйте в app.js перед відкриттям доступу волонтеру).',
+      portionOptions: ['10 порцій', '16 порцій', '24 порції'],
+      fillingOptions: ['Шоколадний мус', 'Ванільний крем', 'Фісташковий крем', 'Ягідний крем'],
+      extraFillingOptions: ['Без додатку', 'Горіхи', 'Шоколадні краплі', 'Свіжі фрукти'],
+      glazeOptions: ['Фондант (цукрова паста)', 'Крем-чиз', 'Шоколадний ганаш'],
+      partyAddonItems: ['Свічка для торта', 'Фонтан для торта', 'Святковий топер'],
       menu: {
         coffee: [
           'Еспресо',
@@ -697,6 +754,14 @@
     return { EN: 'en', BG: 'bg', UA: 'uk' }[code] || 'en';
   }
 
+  function formatDeliveryDate(daysFromToday) {
+    var d = new Date();
+    d.setDate(d.getDate() + daysFromToday);
+    var dd = String(d.getDate()).padStart(2, '0');
+    var mm = String(d.getMonth() + 1).padStart(2, '0');
+    return dd + '.' + mm + '.' + d.getFullYear();
+  }
+
   function sweetFantasy() {
     return {
       lang: 'EN',
@@ -718,6 +783,22 @@
       showCookies: true,
       gdprConsentChecked: false,
       gdprConsentError: false,
+      orderForm: {
+        name: '',
+        phone: '',
+        cakeType: '',
+        quantity: 1,
+        pickupDateTime: '',
+        portions: '',
+        filling: '',
+        extraFilling: '',
+        glaze: '',
+        inscription: '',
+        notes: '',
+        partyAddon: false,
+      },
+      orderErrors: {},
+      orderDraft: null,
       showFab: false,
       dessertTabs: ['custom', 'standard'],
       currentTab: 'custom',
@@ -779,12 +860,61 @@
         } catch (_) {}
       },
 
+      earliestDeliveryDate() {
+        return formatDeliveryDate(2);
+      },
+
+      deliveryDateLabel() {
+        return this.t('deliveryDatePrefix') + ' ' + this.earliestDeliveryDate();
+      },
+
+      orderOptions(key) {
+        var pack = i18n[this.lang] || i18n.EN;
+        var list = pack[key];
+        return Array.isArray(list) ? list : i18n.EN[key] || [];
+      },
+
+      setOrderField(field, value) {
+        this.orderForm[field] = value;
+        this.orderErrors[field] = false;
+      },
+
+      decreaseQuantity() {
+        var value = parseInt(this.orderForm.quantity, 10);
+        this.orderForm.quantity = Math.max(1, isFinite(value) ? value - 1 : 1);
+      },
+
+      increaseQuantity() {
+        var value = parseInt(this.orderForm.quantity, 10);
+        this.orderForm.quantity = Math.max(1, isFinite(value) ? value + 1 : 2);
+      },
+
+      normalizeQuantity() {
+        var value = parseInt(this.orderForm.quantity, 10);
+        this.orderForm.quantity = Math.max(1, isFinite(value) ? value : 1);
+      },
+
+      validateCakeOrder() {
+        this.normalizeQuantity();
+        this.orderErrors = {};
+        ['portions', 'filling', 'glaze'].forEach(
+          function (field) {
+            if (!this.orderForm[field]) this.orderErrors[field] = true;
+          }.bind(this)
+        );
+        if (!this.gdprConsentChecked) this.gdprConsentError = true;
+        return !Object.values(this.orderErrors).some(Boolean) && this.gdprConsentChecked;
+      },
+
       submitCakeOrder() {
-        if (!this.gdprConsentChecked) {
-          this.gdprConsentError = true;
+        if (!this.validateCakeOrder()) {
           return;
         }
         this.gdprConsentError = false;
+        this.orderDraft = Object.assign({}, this.orderForm, {
+          earliestDeliveryDate: this.earliestDeliveryDate(),
+          submittedAt: new Date().toISOString(),
+        });
         this.showPrototypeSuccess = true;
         var self = this;
         setTimeout(function () {

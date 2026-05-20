@@ -488,6 +488,16 @@
                   <div class="p-4">
                     <h4 class="font-display text-lg font-semibold leading-snug text-ink" x-text="item.name"></h4>
                     <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500" x-text="item.desc"></p>
+                    <div class="mt-4 space-y-2">
+                      <div class="rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-3 text-[12px] leading-relaxed text-amber-900">
+                        <span class="block font-semibold uppercase tracking-[0.12em]" x-text="t('productWarningTitle')"></span>
+                        <span x-text="t('productWarningText')"></span>
+                      </div>
+                      <p
+                        class="rounded-xl border border-santorini/20 bg-santorini/10 px-3.5 py-2.5 text-[12px] font-semibold text-santorini-deep"
+                        x-text="deliveryDateLabel()"
+                      ></p>
+                    </div>
                   </div>
                 </li>
               </template>
@@ -931,6 +941,7 @@
                 name="name"
                 autocomplete="name"
                 required
+                x-model.trim="orderForm.name"
                 class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
               />
             </div>
@@ -943,6 +954,7 @@
                 name="phone"
                 autocomplete="tel"
                 required
+                x-model.trim="orderForm.phone"
                 class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
               />
             </div>
@@ -953,11 +965,12 @@
                 id="cake-order-type"
                 name="cakeType"
                 required
+                x-model="orderForm.cakeType"
                 class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
               >
-                <option value="" disabled selected hidden>—</option>
+                <option value="" disabled x-text="t('selectPlaceholder')">-Select-</option>
                 <template x-for="(item, index) in allDessertItems()" :key="'order-dessert-' + index">
-                  <option :value="'dessert-' + index" x-text="item.name"></option>
+                  <option :value="item.name" x-text="item.name"></option>
                 </template>
                 <option value="custom" x-text="t('orderCakeCustomOption')">Custom cake / bespoke design</option>
               </select>
@@ -965,15 +978,100 @@
 
             <div>
               <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-qty" x-text="t('labelQuantity')">Quantity / Slices</label>
-              <input
-                id="cake-order-qty"
-                type="number"
-                name="quantity"
-                min="1"
-                step="1"
-                required
+              <div class="mt-2 flex min-h-11 overflow-hidden rounded-xl border border-slate-900/10 bg-white shadow-sm focus-within:border-santorini-deep focus-within:ring-2 focus-within:ring-santorini/30">
+                <button
+                  type="button"
+                  class="flex w-12 items-center justify-center border-r border-slate-900/10 text-xl font-semibold text-ink transition hover:bg-cream"
+                  @click="decreaseQuantity()"
+                  aria-label="Decrease quantity"
+                >−</button>
+                <input
+                  id="cake-order-qty"
+                  type="number"
+                  name="quantity"
+                  min="1"
+                  step="1"
+                  required
+                  x-model.number="orderForm.quantity"
+                  @input="normalizeQuantity()"
+                  class="min-h-11 w-full border-0 bg-white px-4 py-2.5 text-center text-slate-900 focus:outline-none"
+                />
+                <button
+                  type="button"
+                  class="flex w-12 items-center justify-center border-l border-slate-900/10 text-xl font-semibold text-ink transition hover:bg-cream"
+                  @click="increaseQuantity()"
+                  aria-label="Increase quantity"
+                >+</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-portions" x-text="t('labelPortions')">Portions *</label>
+              <select
+                id="cake-order-portions"
+                name="portions"
+                x-model="orderForm.portions"
+                @change="setOrderField('portions', $event.target.value)"
+                :aria-invalid="orderErrors.portions ? 'true' : 'false'"
                 class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
-              />
+              >
+                <option value="" disabled x-text="t('selectPlaceholder')">-Select-</option>
+                <template x-for="option in orderOptions('portionOptions')" :key="'portion-' + option">
+                  <option :value="option" x-text="option"></option>
+                </template>
+              </select>
+              <p class="mt-2 text-[12px] font-medium text-red-700" x-show="orderErrors.portions" x-cloak x-text="t('fieldRequiredError')"></p>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-filling" x-text="t('labelFilling')">Filling *</label>
+              <select
+                id="cake-order-filling"
+                name="filling"
+                x-model="orderForm.filling"
+                @change="setOrderField('filling', $event.target.value)"
+                :aria-invalid="orderErrors.filling ? 'true' : 'false'"
+                class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
+              >
+                <option value="" disabled x-text="t('selectPlaceholder')">-Select-</option>
+                <template x-for="option in orderOptions('fillingOptions')" :key="'filling-' + option">
+                  <option :value="option" x-text="option"></option>
+                </template>
+              </select>
+              <p class="mt-2 text-[12px] font-medium text-red-700" x-show="orderErrors.filling" x-cloak x-text="t('fieldRequiredError')"></p>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-extra-filling" x-text="t('labelExtraFilling')">Extra Filling</label>
+              <select
+                id="cake-order-extra-filling"
+                name="extraFilling"
+                x-model="orderForm.extraFilling"
+                class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
+              >
+                <option value="" x-text="t('selectPlaceholder')">-Select-</option>
+                <template x-for="option in orderOptions('extraFillingOptions')" :key="'extra-filling-' + option">
+                  <option :value="option" x-text="option"></option>
+                </template>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-glaze" x-text="t('labelGlaze')">Glaze Type *</label>
+              <select
+                id="cake-order-glaze"
+                name="glaze"
+                x-model="orderForm.glaze"
+                @change="setOrderField('glaze', $event.target.value)"
+                :aria-invalid="orderErrors.glaze ? 'true' : 'false'"
+                class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
+              >
+                <option value="" disabled x-text="t('selectPlaceholder')">-Select-</option>
+                <template x-for="option in orderOptions('glazeOptions')" :key="'glaze-' + option">
+                  <option :value="option" x-text="option"></option>
+                </template>
+              </select>
+              <p class="mt-2 text-[12px] font-medium text-red-700" x-show="orderErrors.glaze" x-cloak x-text="t('fieldRequiredError')"></p>
             </div>
 
             <div>
@@ -983,18 +1081,56 @@
                 type="datetime-local"
                 name="pickupDateTime"
                 required
+                x-model="orderForm.pickupDateTime"
                 class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
               />
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-comment" x-text="t('labelComment')">Special Requests / Notes</label>
+              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-inscription" x-text="t('labelInscription')">Inscription</label>
+              <input
+                id="cake-order-inscription"
+                type="text"
+                name="inscription"
+                maxlength="50"
+                x-model.trim="orderForm.inscription"
+                class="mt-2 w-full min-h-11 rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
+              />
+              <p class="mt-1.5 text-[12px] text-slate-500" x-text="t('inscriptionHelp')">Maximum 50 characters.</p>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500" for="cake-order-comment" x-text="t('labelAdditionalNotes')">Additional Notes</label>
               <textarea
                 id="cake-order-comment"
-                name="comment"
+                name="notes"
                 rows="4"
+                x-model.trim="orderForm.notes"
                 class="mt-2 w-full resize-y rounded-xl border border-slate-900/10 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-santorini-deep focus:outline-none focus:ring-2 focus:ring-santorini/30"
               ></textarea>
+            </div>
+
+            <div class="rounded-2xl border border-slate-900/[0.08] bg-cream/40 p-4">
+              <label class="flex cursor-pointer items-start gap-3">
+                <input
+                  id="cake-order-party-addon"
+                  type="checkbox"
+                  name="partyAddon"
+                  class="mt-0.5 size-4 shrink-0 rounded border-slate-300"
+                  x-model="orderForm.partyAddon"
+                />
+                <span class="text-[13px] leading-relaxed text-slate-700" x-text="t('labelPartyAddons')">
+                  Would you like to add a party item?
+                </span>
+              </label>
+              <div class="mt-4 grid gap-3 sm:grid-cols-3" x-show="orderForm.partyAddon" x-transition x-cloak>
+                <p class="sm:col-span-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500" x-text="t('partyAddonGalleryTitle')">
+                  Available festive add-ons
+                </p>
+                <template x-for="item in orderOptions('partyAddonItems')" :key="'party-addon-' + item">
+                  <div class="rounded-xl border border-white bg-white px-3 py-3 text-center text-[12px] font-semibold text-ink shadow-sm" x-text="item"></div>
+                </template>
+              </div>
             </div>
 
             <div>
