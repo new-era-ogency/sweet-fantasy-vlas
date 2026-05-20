@@ -17,51 +17,9 @@
     ],
   });
 
-  /** First release batch: menu desserts grouped by boutique categories. */
+  /** Dessert menu grouped by boutique categories. */
   const DESSERT_MENU_I18N = Object.freeze({
     EN: {
-      standard: [
-        {
-          name: 'Dubai Pistachio',
-          desc: 'Crispy kadaif, pistachio cream, and premium Belgian milk chocolate.',
-          image: 'images/screen_dubai.png',
-        },
-        {
-          name: 'Garash Cake',
-          desc: 'A legendary classic with walnut layers and rich dark chocolate ganache.',
-          image: 'images/screen_garash.png',
-        },
-        {
-          name: 'White Garash',
-          desc: 'A delicate twist on the classic with white chocolate and crunchy nuts.',
-          image: 'images/screen_white_garash.png',
-        },
-        {
-          name: 'Amber Cake',
-          desc: 'Caramel mousse, fine cake layers, and an exquisite balance of sweetness.',
-          image: 'images/screen_amber.png',
-        },
-        {
-          name: 'Amaranta',
-          desc: 'Airy cream, light sponge layers, and a delicate boutique flavor.',
-          image: 'images/screen_amaranta.png',
-        },
-        {
-          name: 'Verdino Almonds & Figs',
-          desc: 'A unique combination of almonds, sweet figs, and light cream.',
-          image: 'images/screen_verdino.png',
-        },
-        {
-          name: 'Dolce Vita Chocolate Mousse',
-          desc: 'Velvety Belgian chocolate mousse on an airy sponge base.',
-          image: 'images/screen_dolce_vita_choco.png',
-        },
-        {
-          name: 'Dolce Vita Fresh Fruits',
-          desc: 'Chocolate harmony topped with fresh seasonal fruits.',
-          image: 'images/screen_dolce_vita_fruit.png',
-        },
-      ],
       custom: [
         {
           name: 'Cake "Stylish 18"',
@@ -81,66 +39,48 @@
         {
           name: 'Pink Ribbon Cake',
           desc: 'An elegant cake with a large fondant bow and a stylish leopard print.',
-          image: 'images/photo_custom-pink-row.jpg',
+          image: 'images/photo_pink-leopard .jpg',
         },
         {
-          name: 'Cake by Your Photo',
-          desc: 'Upload your photo or design, and we will turn it into a photo cake.',
-          image: 'images/photo_your-photo.jpg',
+          name: 'Pink Star Cake',
+          desc: 'A striking star-shaped cake with a leopard print and stylish black ribbons.',
+          image: 'images/photo_pink-star.jpg',
+        },
+        {
+          name: 'Floral Jubilee Cake',
+          desc: 'A delicate celebration cake with hand-crafted flowers and elegant golden details.',
+          image: 'images/photo_cake-with-flowers.jpg',
         },
       ],
-      vegan: [
+      standard: [
         {
-          name: 'Vegan Fruit Cake',
+          name: 'Dubai Pistachio',
+          desc: 'Crispy kadaif, pistachio cream, and premium Belgian milk chocolate.',
+          image: 'images/photo_phistashko-cake.jpg',
+        },
+        {
+          name: 'Garash Cake',
+          desc: 'A legendary classic with walnut layers and rich dark chocolate ganache.',
+          image: 'images/photo_kutia32.jpg',
+        },
+        {
+          name: 'White Garash',
+          desc: 'A delicate twist on the classic with white chocolate and crunchy nuts.',
+          image: 'images/photo_white-S1812.jpg',
+        },
+        {
+          name: 'Amber Cake',
+          desc: 'Caramel mousse, fine cake layers, and an exquisite balance of sweetness.',
+          image: 'images/photo_picture-cake.jpg',
+        },
+        {
+          name: 'Vegan Cake',
           desc: 'A 100% plant-based cake with rich chocolate cream and fresh fruits.',
           image: 'images/photo_vegan-fruit.jpg',
         },
       ],
-      catering: [],
     },
     BG: {
-      standard: [
-        {
-          name: 'Дубай с шамфъстък',
-          desc: 'Хрупкав кадаиф, крем от шамфъстък и белгийски млечен шоколад.',
-          image: 'images/screen_dubai.png',
-        },
-        {
-          name: 'Гараш "Захаро"',
-          desc: 'Легендарна класика с орехови блатове и богат тъмен шоколадов ганаш.',
-          image: 'images/screen_garash.png',
-        },
-        {
-          name: 'Бял Гараш "Захаро"',
-          desc: 'Нежен вариант на класиката с бял шоколад и хрупкави ядки.',
-          image: 'images/screen_white_garash.png',
-        },
-        {
-          name: 'Амбър',
-          desc: 'Карамелен мус, фини блатове и изящен баланс на сладост.',
-          image: 'images/screen_amber.png',
-        },
-        {
-          name: 'Амаранта',
-          desc: 'Ефирен крем, леки блатове и деликатен бутиков вкус.',
-          image: 'images/screen_amaranta.png',
-        },
-        {
-          name: 'Вердино с бадеми и смокини',
-          desc: 'Уникална комбинация от бадеми, сладки смокини и лек крем.',
-          image: 'images/screen_verdino.png',
-        },
-        {
-          name: 'Долче Вита шоколадов мус',
-          desc: 'Кадифен белгийски шоколадов мус върху въздушна основа.',
-          image: 'images/screen_dolce_vita_choco.png',
-        },
-        {
-          name: 'Долче Вита шоко с пресни плодове',
-          desc: 'Шоколадова хармония, гарнирана с пресни сезонни плодове.',
-          image: 'images/screen_dolce_vita_fruit.png',
-        },
-      ],
       custom: [
         {
           name: 'Торта "Стилно 18"',
@@ -160,66 +100,48 @@
         {
           name: 'Торта "Розова панделка"',
           desc: 'Елегантна торта с голяма панделка от фондан и модерен леопардов принт.',
-          image: 'images/photo_custom-pink-row.jpg',
+          image: 'images/photo_pink-leopard .jpg',
         },
         {
-          name: 'Торта по ваша снимка',
-          desc: 'Качете ваша снимка или дизайн, и ние ще я превърнем във вкусен фото-торта.',
-          image: 'images/photo_your-photo.jpg',
+          name: 'Торта "Розова звезда"',
+          desc: 'Ефектна торта във формата на звезда с леопардов принт и стилни черни панделки.',
+          image: 'images/photo_pink-star.jpg',
+        },
+        {
+          name: 'Торта "Цветен юбилей"',
+          desc: 'Нежна празнична торта с ръчно изработени цветя и елегантни златни детайли.',
+          image: 'images/photo_cake-with-flowers.jpg',
         },
       ],
-      vegan: [
+      standard: [
         {
-          name: 'Веганска плодова торта',
+          name: 'Дубай с шамфъстък',
+          desc: 'Хрупкав кадаиф, крем от шамфъстък и белгийски млечен шоколад.',
+          image: 'images/photo_phistashko-cake.jpg',
+        },
+        {
+          name: 'Гараш "Захаро"',
+          desc: 'Легендарна класика с орехови блатове и богат тъмен шоколадов ганаш.',
+          image: 'images/photo_kutia32.jpg',
+        },
+        {
+          name: 'Бял Гараш "Захаро"',
+          desc: 'Нежен вариант на класиката с бял шоколад и хрупкави ядки.',
+          image: 'images/photo_white-S1812.jpg',
+        },
+        {
+          name: 'Амбър',
+          desc: 'Карамелен мус, фини блатове и изящен баланс на сладост.',
+          image: 'images/photo_picture-cake.jpg',
+        },
+        {
+          name: 'Веган торта',
           desc: '100% растителна торта с богат шоколадов крем и селекция от свежи плодове.',
           image: 'images/photo_vegan-fruit.jpg',
         },
       ],
-      catering: [],
     },
     UA: {
-      standard: [
-        {
-          name: 'Дубайський з фісташками',
-          desc: 'Хрусткий кадаїф, фісташковий крем та преміальний бельгійський молочний шоколад.',
-          image: 'images/screen_dubai.png',
-        },
-        {
-          name: 'Торт Гараш',
-          desc: 'Легендарна класика з горіховими коржами та насиченим ганашем із темного шоколаду.',
-          image: 'images/screen_garash.png',
-        },
-        {
-          name: 'Білий Гараш',
-          desc: 'Ніжний варіант класики з білим шоколадом та хрусткими горіхами.',
-          image: 'images/screen_white_garash.png',
-        },
-        {
-          name: 'Амбер',
-          desc: 'Карамельний мус, ніжні коржі та витончений баланс солодкості.',
-          image: 'images/screen_amber.png',
-        },
-        {
-          name: 'Амаранта',
-          desc: 'Ефірний крем, легкі коржі та делікатний бутиковий смак.',
-          image: 'images/screen_amaranta.png',
-        },
-        {
-          name: 'Вердіно з мигдалем та інжиром',
-          desc: 'Унікальне поєднання мигдалю, солодкого інжиру та легкого крему.',
-          image: 'images/screen_verdino.png',
-        },
-        {
-          name: 'Дольче Віта шоколадний мус',
-          desc: 'Оксамитовий бельгійський шоколадний мус на повітряній основі.',
-          image: 'images/screen_dolce_vita_choco.png',
-        },
-        {
-          name: 'Дольче Віта з фруктами',
-          desc: 'Шоколадна гармонія, прикрашена свіжими сезонними фруктами.',
-          image: 'images/screen_dolce_vita_fruit.png',
-        },
-      ],
       custom: [
         {
           name: 'Торт "Стильне 18"',
@@ -239,22 +161,46 @@
         {
           name: 'Торт "Рожевий бант"',
           desc: 'Елегантний торт з великим бантом із мастики та модним леопардовим принтом.',
-          image: 'images/photo_custom-pink-row.jpg',
+          image: 'images/photo_pink-leopard .jpg',
         },
         {
-          name: 'Торт за вашим фото',
-          desc: 'Завантажте своє фото або дизайн, і ми перетворимо його на смачний фото-торт.',
-          image: 'images/photo_your-photo.jpg',
+          name: 'Торт "Рожева зірка"',
+          desc: 'Ефектний торт у формі зірки з леопардовим принтом та стильними чорними бантами.',
+          image: 'images/photo_pink-star.jpg',
+        },
+        {
+          name: 'Торт "Квітковий ювілей"',
+          desc: 'Ніжний святковий торт з ручними квітами та елегантними золотими деталями.',
+          image: 'images/photo_cake-with-flowers.jpg',
         },
       ],
-      vegan: [
+      standard: [
         {
-          name: 'Веганський фруктовий торт',
+          name: 'Дубайський з фісташками',
+          desc: 'Хрусткий кадаїф, фісташковий крем та преміальний бельгійський молочний шоколад.',
+          image: 'images/photo_phistashko-cake.jpg',
+        },
+        {
+          name: 'Торт Гараш',
+          desc: 'Легендарна класика з горіховими коржами та насиченим ганашем із темного шоколаду.',
+          image: 'images/photo_kutia32.jpg',
+        },
+        {
+          name: 'Білий Гараш',
+          desc: 'Ніжний варіант класики з білим шоколадом та хрусткими горіхами.',
+          image: 'images/photo_white-S1812.jpg',
+        },
+        {
+          name: 'Амбер',
+          desc: 'Карамельний мус, ніжні коржі та витончений баланс солодкості.',
+          image: 'images/photo_picture-cake.jpg',
+        },
+        {
+          name: 'Веганський торт',
           desc: '100% рослинний торт із насиченим шоколадним кремом та свіжими фруктами.',
           image: 'images/photo_vegan-fruit.jpg',
         },
       ],
-      catering: [],
     },
   });
 
@@ -327,7 +273,7 @@
       secBubble: 'Bubble tea',
       secLemonade: 'Signature lemonades',
       secDesserts: 'Desserts',
-      dessertsZaharoLegend: 'Boutique cake collection — custom, vegan, standard, and catering selections.',
+      dessertsZaharoLegend: 'Boutique cake collection — custom designs and standard signatures.',
       orderCakeCustomOption: 'Custom cake / bespoke design',
       capDrinks: 'Coffee rituals, softened light.',
       capCakes: 'A plate of sweetness for pausing.',
@@ -483,7 +429,7 @@
       secLemonade: 'Авторски лимонади',
       secDesserts: 'Десерти',
       dessertsZaharoLegend:
-        'Бутикова колекция торти — по поръчка, веган, стандартни и кетъринг предложения.',
+        'Бутикова колекция торти — дизайни по поръчка и стандартни авторски предложения.',
       orderCakeCustomOption: 'Торта по поръчка / индивидуален дизайн',
       capDrinks: 'Кафе ритуали в меката светлина.',
       capCakes: 'Сладка пауза за масата ви.',
@@ -639,7 +585,7 @@
       secLemonade: 'Авторські лимонади',
       secDesserts: 'Десерти',
       dessertsZaharoLegend:
-        'Boutique-колекція тортів — на замовлення, веган, стандартні та кейтеринг-пропозиції.',
+        'Boutique-колекція тортів — дизайни на замовлення та стандартні авторські позиції.',
       orderCakeCustomOption: 'Торт на замовлення / індивідуальний дизайн',
       capDrinks: 'Кавові ритуали в м’якому світлі.',
       capCakes: 'Солодка перерва для вашого столу.',
@@ -773,7 +719,7 @@
       gdprConsentChecked: false,
       gdprConsentError: false,
       showFab: false,
-      dessertTabs: ['standard', 'custom', 'vegan', 'catering'],
+      dessertTabs: ['custom', 'standard'],
       currentTab: 'custom',
       showAllDesserts: false,
       isWideScreen: false,
