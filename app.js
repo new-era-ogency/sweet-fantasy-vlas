@@ -539,6 +539,9 @@
       labelPartyAddons: 'Would you like to add a party item — candle or fountain?',
       productWarningTitle: 'Important product note',
       productWarningText: 'Продуктът съдържа крепежни елементи',
+      cakeInfoShow: 'Show info',
+      cakeInfoHide: 'Hide info',
+      cakeInfoHint: 'Tap a cake to view its details.',
       deliveryDatePrefix: 'Earliest delivery date:',
       selectPlaceholder: '-Select-',
       fieldRequiredError: 'Please select an option.',
@@ -717,6 +720,9 @@
       labelPartyAddons: 'Желаете ли да добавите парти артикул – свещ, фойерверк?',
       productWarningTitle: 'Важно за продукта',
       productWarningText: 'Продуктът съдържа крепежни елементи',
+      cakeInfoShow: 'Виж информация',
+      cakeInfoHide: 'Скрий информация',
+      cakeInfoHint: 'Натиснете торта, за да видите описанието.',
       deliveryDatePrefix: 'Най-ранна дата на доставка:',
       selectPlaceholder: '-Изберете-',
       fieldRequiredError: 'Моля, изберете опция.',
@@ -895,6 +901,9 @@
       labelPartyAddons: 'Бажаєте додати святковий аксесуар — свічку або фонтан?',
       productWarningTitle: 'Важливо про продукт',
       productWarningText: 'Продуктът съдържа крепежни елементи',
+      cakeInfoShow: 'Показати інформацію',
+      cakeInfoHide: 'Сховати інформацію',
+      cakeInfoHint: 'Натисніть на торт, щоб побачити опис.',
       deliveryDatePrefix: 'Найраніша дата доставки:',
       selectPlaceholder: '-Оберіть-',
       fieldRequiredError: 'Будь ласка, оберіть опцію.',
@@ -1039,6 +1048,7 @@
       showFab: false,
       dessertTabs: ['custom', 'standard'],
       currentTab: 'custom',
+      selectedDessertKey: '',
       showAllDesserts: false,
       isWideScreen: false,
 
@@ -1225,7 +1235,21 @@
       setDessertTab(tab) {
         if (!this.dessertTabs.includes(tab)) return;
         this.currentTab = tab;
+        this.selectedDessertKey = '';
         this.showAllDesserts = false;
+      },
+
+      dessertInfoKey(item, index) {
+        return this.currentTab + '-' + index + '-' + (item && item.name ? item.name : 'cake');
+      },
+
+      isDessertInfoOpen(item, index) {
+        return this.selectedDessertKey === this.dessertInfoKey(item, index);
+      },
+
+      toggleDessertInfo(item, index) {
+        var key = this.dessertInfoKey(item, index);
+        this.selectedDessertKey = this.selectedDessertKey === key ? '' : key;
       },
 
       activeDesserts() {
