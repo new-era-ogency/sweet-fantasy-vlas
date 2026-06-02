@@ -436,6 +436,7 @@
   /** Session flag so the PIN is not requested again until the browser tab closes. */
   const GALLERY_SESSION_KEY = 'sf_gallery_publish_ok';
   const COOKIE_CONSENT_KEY = 'sf_cookie_consent';
+  const BOOKING_API_URL = 'https://sweet-fantasy-laravel-backend-main-m02oze.laravel.cloud/api/booking';
 
   function sanitizeGalleryBasename(original) {
     var base = String(original || '').replace(/\.[^.]+$/, '').trim();
@@ -525,9 +526,11 @@
       orderCakeIntro:
         'Planning a special day? Choose one of our signature desserts or order a custom cake. Fill out the form below, and we will get back to you to confirm details.',
       labelName: 'Your Name',
+      labelEmail: 'Email',
       labelPhone: 'Phone Number',
       labelCakeType: 'Select Cake / Dessert',
       labelQuantity: 'Quantity',
+      labelWeight: 'Cake weight (kg) *',
       labelDate: 'Preferred Pickup Date & Time',
       labelComment: 'Special Requests / Notes',
       labelPortions: 'Portions *',
@@ -548,7 +551,9 @@
       inscriptionHelp: 'Maximum 50 characters.',
       partyAddonGalleryTitle: 'Available festive add-ons',
       btnOrderSubmit: 'Place Cake Order',
-      orderSuccessMsg: '✨ Prototype Mode: Thank you! (This simulates a successful submission).',
+      bookingSubmitLoading: 'Sending...',
+      orderSuccessMsg: 'Thank you! Your cake booking has been sent successfully.',
+      orderErrorMsg: 'We could not send your booking right now. Please try again or contact us by phone.',
       gdprConsent: 'I agree to the processing of my personal data for order management.',
       gdprConsentError: 'Please confirm your consent to continue.',
       cookieNotice:
@@ -706,9 +711,11 @@
       orderCakeIntro:
         'Планирате специален ден? Изберете един от нашите авторски десерти или поръчайте торта по ваш вкус. Попълнете формата по-долу и ще се свържем с вас.',
       labelName: 'Вашето име',
+      labelEmail: 'Имейл',
       labelPhone: 'Телефонен номер',
       labelCakeType: 'Изберете торта / десерт',
       labelQuantity: 'Количество',
+      labelWeight: 'Тегло на тортата (кг) *',
       labelDate: 'Желани дата и час за вземане',
       labelComment: 'Специални изисквания / бележки',
       labelPortions: 'Порции *',
@@ -729,7 +736,9 @@
       inscriptionHelp: 'Максимум 50 символа.',
       partyAddonGalleryTitle: 'Достъпни празнични добавки',
       btnOrderSubmit: 'Направи поръчка',
-      orderSuccessMsg: '✨ Прототип: Благодарим ви! (Това демонстрира успешно изпращане).',
+      bookingSubmitLoading: 'Изпращане...',
+      orderSuccessMsg: 'Благодарим ви! Заявката за торта беше изпратена успешно.',
+      orderErrorMsg: 'Не успяхме да изпратим заявката. Моля, опитайте отново или се свържете с нас по телефон.',
       gdprConsent: 'Съгласен съм с обработката на личните ми данни за управление на поръчката.',
       gdprConsentError: 'Моля, потвърдете съгласието си, за да продължите.',
       cookieNotice:
@@ -887,9 +896,11 @@
       orderCakeIntro:
         'Плануєте особливе свято? Виберіть один із наших фірмових десертів або замовте торт за власним дизайном. Заповніть форму нижче, і ми зв’яжемося з вами.',
       labelName: 'Ваше ім’я',
+      labelEmail: 'Email',
       labelPhone: 'Номер телефону',
       labelCakeType: 'Оберіть торт / десерт',
       labelQuantity: 'Кількість',
+      labelWeight: 'Вага торта (кг) *',
       labelDate: 'Бажана дата та час отримання',
       labelComment: 'Особливі побажання / нотатки',
       labelPortions: 'Порції *',
@@ -910,7 +921,9 @@
       inscriptionHelp: 'Максимум 50 символів.',
       partyAddonGalleryTitle: 'Доступні святкові додатки',
       btnOrderSubmit: 'Замовити торт',
-      orderSuccessMsg: '✨ Режим прототипу: Дякуємо! (Емуляція успішного надсилання заявки).',
+      bookingSubmitLoading: 'Надсилання...',
+      orderSuccessMsg: 'Дякуємо! Заявку на торт успішно надіслано.',
+      orderErrorMsg: 'Не вдалося надіслати заявку. Спробуйте ще раз або зв’яжіться з нами телефоном.',
       gdprConsent: 'Я даю згоду на обробку моїх персональних даних для керування замовленням.',
       gdprConsentError: 'Будь ласка, підтвердіть згоду, щоб продовжити.',
       cookieNotice:
@@ -1026,14 +1039,18 @@
       selectedRichardCategory: 'Всички',
 
       showPrototypeSuccess: false,
+      bookingSubmitting: false,
+      bookingError: '',
       showCookies: true,
       gdprConsentChecked: false,
       gdprConsentError: false,
       orderForm: {
         name: '',
+        email: '',
         phone: '',
         cakeType: '',
         quantity: 1,
+        weightInKg: '',
         pickupDateTime: '',
         portions: '',
         filling: '',
@@ -1144,29 +1161,77 @@
       validateCakeOrder() {
         this.normalizeQuantity();
         this.orderErrors = {};
-        ['portions', 'filling', 'glaze'].forEach(
+        ['email', 'pickupDateTime', 'portions', 'filling', 'glaze'].forEach(
           function (field) {
             if (!this.orderForm[field]) this.orderErrors[field] = true;
           }.bind(this)
         );
+        var weight = Number(this.orderForm.weightInKg);
+        if (!isFinite(weight) || weight <= 0) this.orderErrors.weightInKg = true;
         if (!this.gdprConsentChecked) this.gdprConsentError = true;
         return !Object.values(this.orderErrors).some(Boolean) && this.gdprConsentChecked;
       },
 
-      submitCakeOrder() {
+      bookingDesignComment() {
+        var parts = [
+          'Phone: ' + this.orderForm.phone,
+          'Cake type: ' + this.orderForm.cakeType,
+          'Quantity: ' + this.orderForm.quantity,
+          'Portions: ' + this.orderForm.portions,
+          'Glaze: ' + this.orderForm.glaze,
+          'Extra filling: ' + (this.orderForm.extraFilling || '-'),
+          'Inscription: ' + (this.orderForm.inscription || '-'),
+          'Notes: ' + (this.orderForm.notes || '-'),
+          'Party addon: ' + (this.orderForm.partyAddon ? 'Yes' : 'No'),
+        ];
+        return parts.join('\n');
+      },
+
+      async submitCakeOrder() {
+        if (this.bookingSubmitting) return;
         if (!this.validateCakeOrder()) {
           return;
         }
         this.gdprConsentError = false;
+        this.bookingError = '';
+        this.bookingSubmitting = true;
         this.orderDraft = Object.assign({}, this.orderForm, {
           earliestDeliveryDate: this.earliestDeliveryDate(),
           submittedAt: new Date().toISOString(),
         });
-        this.showPrototypeSuccess = true;
-        var self = this;
-        setTimeout(function () {
-          self.showPrototypeSuccess = false;
-        }, 5000);
+
+        try {
+          var response = await fetch(BOOKING_API_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              customerName: this.orderForm.name,
+              customerEmail: this.orderForm.email,
+              deliveryDate: new Date(this.orderForm.pickupDateTime).toISOString(),
+              weightInKg: Number(this.orderForm.weightInKg),
+              filling: this.orderForm.filling,
+              designComment: this.bookingDesignComment(),
+            }),
+          });
+          var data = await response.json();
+
+          if (!response.ok || !data.success) {
+            throw new Error(data.message || 'Booking request failed');
+          }
+
+          this.showPrototypeSuccess = true;
+          var self = this;
+          setTimeout(function () {
+            self.showPrototypeSuccess = false;
+          }, 5000);
+        } catch (error) {
+          console.error('Ошибка при бронировании торта:', error);
+          this.bookingError = this.t('orderErrorMsg');
+        } finally {
+          this.bookingSubmitting = false;
+        }
       },
 
       quickContact() {
